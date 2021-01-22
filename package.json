@@ -1,0 +1,26 @@
+{
+	"name": "weeding-site",
+	"version": "0.0.0",
+	"description": "",
+	"author": "",
+	"license": "MIT",
+	"scripts": {
+		"build": "rimraf dist && gulp",
+		"prestart": "yarn install && yarn build",
+		"start": "http-server ./dist -p 80",
+		"start:dev": "http-server ./src -p 3000",
+		"compile-sass": "sass --watch ./src/sass/style.scss ./src/css/style.css"
+	},
+	"dependencies": {
+		"http-server": "^0.12.3"
+	},
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-uglify": "^3.0.2",
+		"gulp-uglifycss": "^1.1.0",
+		"prettier": "1.19.1",
+		"readable-stream": "^3.6.0",
+		"rimraf": "^3.0.2",
+		"sass": "^1.29.0"
+	}
+}
