@@ -828,7 +828,7 @@
 	$('[data-gift-list-name]').on('click', function() {
 		const listName = $(this).data('gift-list-name');
 
-		gtag('event', listName + ' click', {
+		gtag('event', listName + '_click', {
 			send_to: 'G-LP423FLDNS',
 			event_category: 'Gift List',
 			event_label: 'Wedding'
