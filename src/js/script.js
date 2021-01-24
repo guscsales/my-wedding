@@ -821,4 +821,17 @@
 	});
 
 	$('[data-toggle="tooltip"]').tooltip();
+
+	/*==========================================================================
+        TRACKING GIFT LIST
+    ==========================================================================*/
+	$('[data-gift-list-name]').on('click', function() {
+		const listName = $(this).data('gift-list-name');
+
+		gtag('event', listName + ' click', {
+			send_to: 'G-LP423FLDNS',
+			event_category: 'Gift List',
+			event_label: 'Wedding'
+		});
+	});
 })(window.jQuery);
