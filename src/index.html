@@ -155,6 +155,7 @@
 								<li><a href="#couple">Casal</a></li>
 								<li><a href="#story">História</a></li>
 								<li><a href="#events">Local</a></li>
+								<li><a href="#rsvp">Confirmar Presença</a></li>
 								<li><a href="#gifts">Listas de Presentes</a></li>
 							</ul>
 						</div>
@@ -473,6 +474,74 @@
 			</section>
 			<!-- end getting-there-section -->
 
+			<!-- start rsvp-section -->
+			<section
+				class="rsvp-section section-padding parallax"
+				data-bg-image="images/rsvp-bg.jpg"
+				data-speed="7"
+				id="rsvp"
+			>
+				<div class="container">
+					<div class="row">
+						<div class="col col-xs-12">
+							<div class="section-title-white">
+								<div class="vertical-line">
+									<span><i class="fi flaticon-two"></i></span>
+								</div>
+								<h2>Confirmar Presença</h2>
+							</div>
+						</div>
+					</div>
+					<!-- end section-title -->
+
+					<div class="row content">
+						<div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+							<p>Para confirmar sua presença, digite o seu nome completo.</p>
+							<form
+								id="rsvp-form"
+								class="form validate-rsvp-form row"
+								method="post"
+							>
+								<div class="col col-sm-9 col-xs-12">
+									<input
+										type="text"
+										name="name"
+										class="form-control confirm-presence-input"
+									/>
+								</div>
+								<div class="col col-sm-3 col-xs-12 search-btn">
+									<button type="button" class="search-family-btn">Buscar</button>
+								</div>
+								<div id="guests" class="col col-md-12 blog-details-content" style="display: none;">
+									<div class="entry-content">
+										<blockquote>
+											<small>Convidados</small>
+											<h3 id="guests-names"></h3>
+										</blockquote>
+									</div>
+								</div>
+								<div class="col col-sm-12 submit-btn" style="display: none;">
+									<button type="submit" class="submit-button">Confirmar Presença</button>
+									<span id="loader"
+									><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i
+									></span>
+								</div>
+								<div class="col col-md-12 success-error-message">
+									<div id="success"></div>
+									<div id="error">
+										<span></span><br />
+										Fique à vontade para entrar em contato comigo pelo WhatsApp: <a href="https://api.whatsapp.com/send?phone=5511952978616" target="_blank">(11) 95297-8616</a>.
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end container -->
+			</section>
+			<!-- end rsvp-section -->
+
 			<!-- start gift-registration-section -->
 			<section class="gift-registration-section section-padding" id="gifts">
 				<div class="container">
@@ -564,6 +633,27 @@
 
 		<!-- Plugins for this template -->
 		<script src="js/jquery-plugin-collection.js"></script>
+
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: "AIzaSyAMgpclYO6k3A5Owjk9tMwUIBC2kSHsGnQ",
+				authDomain: "wedding-stage-92e97b57.firebaseapp.com",
+				projectId: "wedding-stage-92e97b57",
+				storageBucket: "wedding-stage-92e97b57.appspot.com",
+				messagingSenderId: "848883940882",
+				appId: "1:848883940882:web:d5cc5cf4ff874f3e57e2cb"
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+		</script>
 
 		<!-- Custom script for this template -->
 		<script src="js/script.js"></script>

@@ -1034,6 +1034,38 @@
 			background-color: darken($theme-primary-color, 10%);
 		}
 
+		.search-btn {
+			text-align: center;
+		}
+
+		.search-btn button {
+			width: 100%;
+			background-color: $gray;
+			height: 45px;
+			line-height: 45px;
+			font-size: 16px;
+			font-size: calc-rem-value(16);
+			font-weight: 600;
+			color: $white;
+			padding: 0 15px;
+			border: 0;
+			outline: 0;
+			text-transform: uppercase;
+			@include rounded-border(3px);
+			@include transition-time(0.3s);
+
+			@include media-query(991px) {
+				height: 40px;
+				line-height: 40px;
+				font-size: 15px;
+				font-size: calc-rem-value(15);
+			}
+		}
+
+		.search-btn button:hover {
+			background-color: darken($gray, 10%);
+		}
+
 		.success-error-message {
 			margin-bottom: 0;
 

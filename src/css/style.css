@@ -3073,6 +3073,44 @@ a:focus {
 .rsvp-section .form .submit-btn button:hover {
   background-color: #8a2e26;
 }
+.rsvp-section .form .search-btn {
+  text-align: center;
+}
+.rsvp-section .form .search-btn button {
+  width: 100%;
+  background-color: #a0a0a0;
+  height: 45px;
+  line-height: 45px;
+  font-size: 16px;
+  font-size: 0.8888888889rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 0 15px;
+  border: 0;
+  outline: 0;
+  text-transform: uppercase;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+@media (max-width: 991px) {
+  .rsvp-section .form .search-btn button {
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    font-size: 0.8333333333rem;
+  }
+}
+.rsvp-section .form .search-btn button:hover {
+  background-color: #878787;
+}
 .rsvp-section .form .success-error-message {
   margin-bottom: 0;
 }

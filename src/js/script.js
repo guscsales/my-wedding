@@ -530,19 +530,33 @@
 	/*------------------------------------------
         = RSVP FORM SUBMISSION
     -------------------------------------------*/
+	function normalizeName(value) {
+		return value
+			.trim()
+			.toLowerCase()
+			.replace(/[áàãâä]/g, 'a')
+			.replace(/[éèêë]/g, 'e')
+			.replace(/[íìîï]/g, 'i')
+			.replace(/[óòõôö]/g, 'o')
+			.replace(/[úùûü]/g, 'u')
+			.replace(/[ç]/g, 'c')
+			.replace(/_+/, '_');
+	}
+
 	if ($('#rsvp-form').length) {
-		const apiKey = '91539d04baea4cfd80947c35f3bf34f4';
+		const db = firebase.firestore();
+		const familiesRef = db.collection('families');
+		var family = null;
 
 		$('#rsvp-form').validate({
 			rules: {
-				code: {
-					required: true,
-					maxlength: 5
+				name: {
+					required: true
 				}
 			},
 
 			messages: {
-				code: 'Por favor, digite o código'
+				name: 'Por favor, digite o seu nome completo'
 			},
 
 			submitHandler: function(form) {
@@ -553,15 +567,11 @@
 					$('#guests')
 						.stop()
 						.slideUp('slow');
-					const code = $('.confirm-presence-input').val();
 
-					$.ajax({
-						type: 'PATCH',
-						url: '/api/guests/confirm-presence/' + code,
-						headers: {
-							'x-api-key': apiKey
-						},
-						success: function() {
+					familiesRef
+						.doc(family.id)
+						.update({ confirmed: true })
+						.then(function() {
 							$('.confirm-presence-input').val('');
 							$('#guests')
 								.stop()
@@ -577,8 +587,8 @@
 								.stop()
 								.slideDown('slow');
 							form.reset();
-						},
-						error: function() {
+						})
+						.catch(function() {
 							$('#loader').hide();
 							$('#error')
 								.stop()
@@ -588,8 +598,7 @@
 									.stop()
 									.slideUp('slow');
 							}, 3000);
-						}
-					});
+						});
 				}
 
 				return false; // required to block normal submit since you used ajax
@@ -597,57 +606,69 @@
 		});
 
 		const $confirmPresenceInput = $('.confirm-presence-input');
+		const $searchFamily = $('.search-family-btn');
 
-		if ($confirmPresenceInput.length) {
-			$confirmPresenceInput.mask('GH000', {
-				placeholder: 'Exemplo: GH000'
-			});
+		$searchFamily.on('click', function() {
+			const value = normalizeName($confirmPresenceInput.val());
 
-			$confirmPresenceInput.on('keyup', function() {
-				const value = $(this).val();
+			$('#success, #error, #guests')
+				.stop()
+				.slideUp('fast');
+			$('.submit-btn').hide();
+			console.log(value);
+			familiesRef
+				.where('normalizedNames', 'array-contains', value)
+				.get()
+				.then(function(querySnapshot) {
+					family = null;
 
-				$('#success, #error, #guests')
-					.stop()
-					.slideUp('fast');
-				$('.submit-btn').hide();
-
-				if (value.length === 5) {
-					$.ajax({
-						type: 'GET',
-						url: '/api/guests/' + value,
-						headers: {
-							'x-api-key': apiKey
-						},
-						success: function(data) {
-							if (data.guest.confirmed) {
-								$('#success')
-									.html(data.message)
-									.stop()
-									.slideDown('slow');
-							} else {
-								const names = data.guest.names.split(',');
-								const lastName = names.pop();
-								const result = names.join(', ') + ' e ' + lastName;
-
-								$('#guests-names').html(result);
-
-								$('#guests')
-									.stop()
-									.slideDown('slow');
-								$('.submit-btn').show();
-							}
-						},
-						error: function(e) {
-							$('#loader').hide();
-							$('#error span').html(e.responseJSON.message);
-							$('#error')
-								.stop()
-								.slideDown('slow');
+					querySnapshot.forEach(function(doc) {
+						if (doc.id) {
+							family = doc.data().normalizedNames.indexOf(value) !== -1 && {
+								id: doc.id,
+								...doc.data()
+							};
+							return false;
 						}
 					});
-				}
-			});
-		}
+
+					if (family) {
+						if (family.confirmed) {
+							$('#success')
+								.html('A presença da sua família já foi confirmada!')
+								.stop()
+								.slideDown('slow');
+						} else {
+							const lastName = family.names.pop();
+							const result = family.names.join(', ') + ' e ' + lastName;
+
+							$('#guests-names').html(result);
+
+							$('#guests')
+								.stop()
+								.slideDown('slow');
+							$('.submit-btn').show();
+						}
+					} else {
+						$('#loader').hide();
+						$('#error span').html(
+							'Não achamos nenhum registro, por favor confira seu nome completo e tente novamente.'
+						);
+						$('#error')
+							.stop()
+							.slideDown('slow');
+					}
+				})
+				.catch(function() {
+					$('#loader').hide();
+					$('#error span').html(
+						'Ocorreu algum erro, por favor confira seu nome e tente novamente.'
+					);
+					$('#error')
+						.stop()
+						.slideDown('slow');
+				});
+		});
 	}
 
 	/*------------------------------------------
