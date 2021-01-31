@@ -568,6 +568,8 @@
 						.stop()
 						.slideUp('slow');
 
+					gtag('event', 'rsvp_submitted');
+
 					familiesRef
 						.doc(family.id)
 						.update({ confirmed: true })
@@ -587,6 +589,7 @@
 								.stop()
 								.slideDown('slow');
 							form.reset();
+							gtag('event', 'rsvp_submitted_success');
 						})
 						.catch(function() {
 							$('#loader').hide();
@@ -598,6 +601,7 @@
 									.stop()
 									.slideUp('slow');
 							}, 3000);
+							gtag('event', 'rsvp_submitted_error');
 						});
 				}
 
@@ -615,7 +619,7 @@
 				.stop()
 				.slideUp('fast');
 			$('.submit-btn').hide();
-			console.log(value);
+
 			familiesRef
 				.where('normalizedNames', 'array-contains', value)
 				.get()
