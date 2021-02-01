@@ -2004,12 +2004,12 @@ a:focus {
 .wedding-couple-section .gb > div {
   width: 50%;
   float: left;
-  min-height: 426px;
 }
 @media (max-width: 991px) {
   .wedding-couple-section .gb > div {
     width: 100%;
     float: none;
+    min-height: 426px;
   }
 }
 .wedding-couple-section .img-holder img {

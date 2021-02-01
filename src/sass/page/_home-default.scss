@@ -8,13 +8,13 @@
 		> div {
 			width: 50%;
 			float: left;
-			min-height: 426px;
 		}
 
 		> div {
 			@include media-query(991px) {
 				width: 100%;
 				float: none;
+				min-height: 426px;
 			}
 		}
 	}
