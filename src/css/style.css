@@ -2004,6 +2004,7 @@ a:focus {
 .wedding-couple-section .gb > div {
   width: 50%;
   float: left;
+  min-height: 426px;
 }
 @media (max-width: 991px) {
   .wedding-couple-section .gb > div {

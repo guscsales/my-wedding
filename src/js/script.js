@@ -848,13 +848,23 @@
 	$('[data-toggle="tooltip"]').tooltip();
 
 	/*==========================================================================
-        TRACKING GIFT LIST
+        TRACKING
     ==========================================================================*/
 	$('[data-gift-list-name]').on('click', function() {
 		const listName = $(this).data('gift-list-name');
 
 		gtag('event', 'page_view', {
 			page_title: listName
+		});
+	});
+
+	$('.menu-item').on('click', function() {
+		const page = $(this)
+			.attr('href')
+			.replace('#', '');
+
+		gtag('event', 'page_view', {
+			page_title: page
 		});
 	});
 })(window.jQuery);

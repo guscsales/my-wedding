@@ -89,10 +89,6 @@
 					<div class="slide-item">
 						<img src="images/slider/slide-1.jpg" alt class="slider-bg" />
 					</div>
-
-					<div class="slide-item">
-						<img src="images/slider/slide-2.jpg" alt class="slider-bg" />
-					</div>
 				</div>
 				<div class="wedding-announcement">
 					<div class="couple-name-merried-text">
@@ -142,7 +138,7 @@
 							</button>
 							<div class="couple-logo">
 								<h1>
-									<a href="#home">G <i class="fi flaticon-shape-1"></i> H</a>
+									<a href="#home" class="menu-item">G <i class="fi flaticon-shape-1"></i> H</a>
 								</h1>
 							</div>
 						</div>
@@ -152,11 +148,12 @@
 						>
 							<button class="close-navbar"><i class="fa fa-close"></i></button>
 							<ul class="nav navbar-nav">
-								<li><a href="#couple">Casal</a></li>
-								<li><a href="#story">História</a></li>
-								<li><a href="#events">Local</a></li>
-								<li><a href="#rsvp">Confirmar Presença</a></li>
-								<li><a href="#gifts">Listas de Presentes</a></li>
+								<li><a href="#couple" class="menu-item">Casal</a></li>
+								<li><a href="#story" class="menu-item">História</a></li>
+								<li><a href="#events" class="menu-item">Local</a></li>
+								<li><a href="#rsvp" class="menu-item">Confirmar Presença</a></li>
+<!--								<li><a href="#galery" class="menu-item">Galeria</a></li>-->
+								<li><a href="#gifts" class="menu-item">Listas de Presentes</a></li>
 							</ul>
 						</div>
 						<!-- end of nav-collapse -->
@@ -543,6 +540,72 @@
 			</section>
 			<!-- end rsvp-section -->
 
+			<!-- start gallery-section -->
+			<!--<section class="gallery-section section-padding" id="gallery">
+				<div class="container">
+					<div class="row">
+						<div class="col col-xs-12">
+							<div class="section-title">
+								<div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
+								<h2>Galeria</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-xs-12 sortable-gallery">
+							<div class="gallery-container gallery-fancybox masonry-gallery">
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-1.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-1.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-2.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-2.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-3.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-3.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-4.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-4.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-5.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-5.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-6.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-6.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-7.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-7.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-7.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-7.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+								<div class="grid pre-wedding">
+									<a href="images/gallery/img-9.jpg" class="fancybox" data-fancybox-group="gall-1">
+										<img src="images/gallery/img-9.jpg" alt class="img img-responsive">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>-->
+			<!-- end gallery-section -->
+
 			<!-- start gift-registration-section -->
 			<section class="gift-registration-section section-padding" id="gifts">
 				<div class="container">
@@ -638,9 +701,6 @@
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
-
-		<!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
 
 		<script>
 			// Your web app's Firebase configuration
