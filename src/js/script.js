@@ -560,9 +560,13 @@
 			},
 
 			submitHandler: function(form) {
-				const guests = $('#guests-names').text();
+				const $guests = $('#guests-names');
+				const guests = $guests.text();
 
-				if (confirm('Deseja confirmar a presença para ' + guests)) {
+				if (
+					$guests.is(':visible') &&
+					confirm('Deseja confirmar a presença para ' + guests)
+				) {
 					$('#loader').css('display', 'inline-block');
 					$('#guests')
 						.stop()
@@ -644,7 +648,10 @@
 								.slideDown('slow');
 						} else {
 							const lastName = family.names.pop();
-							const result = family.names.join(', ') + ' e ' + lastName;
+							const result =
+								family.names.join(', ') +
+								(family.names.length > 0 ? ' e ' : '') +
+								lastName;
 
 							$('#guests-names').html(result);
 
