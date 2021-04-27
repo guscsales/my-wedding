@@ -2004,7 +2004,7 @@ a:focus {
 .wedding-couple-section .gb > div {
   width: 50%;
   float: left;
-  min-height: 554px;
+  min-height: 426px;
 }
 @media (max-width: 991px) {
   .wedding-couple-section .gb > div {
@@ -3195,9 +3195,9 @@ a:focus {
   text-align: center;
 }
 .gift-registration-section .gif-registration-slider {
-  width: 550px;
+  width: 230px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   column-gap: 35px;
   margin: 0 auto;
   margin-top: 55px;
