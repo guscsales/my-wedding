@@ -613,10 +613,15 @@
 			}
 		});
 
+		/*------------------------------------------
+      = RSVP FIND FAMILY
+  -------------------------------------------*/
+		const params = new URLSearchParams(location.search);
+		const guestParam = params.get('guest');
 		const $confirmPresenceInput = $('.confirm-presence-input');
 		const $searchFamily = $('.search-family-btn');
 
-		$searchFamily.on('click', function() {
+		function findAndConfirmPresence() {
 			const value = normalizeName($confirmPresenceInput.val());
 
 			$('#success, #error, #guests')
@@ -679,7 +684,28 @@
 						.stop()
 						.slideDown('slow');
 				});
-		});
+		}
+
+		if (guestParam) {
+			familiesRef
+				.doc(guestParam)
+				.get()
+				.then(docRef => {
+					const family = docRef.data();
+
+					if (family) {
+						$confirmPresenceInput.val(family.names[0]);
+						findAndConfirmPresence();
+						setTimeout(() => {
+							$('[href="#rsvp"]').trigger('click');
+						}, 1000);
+					} else {
+						console.log('no data');
+					}
+				});
+		}
+
+		$searchFamily.on('click', findAndConfirmPresence);
 	}
 
 	/*------------------------------------------

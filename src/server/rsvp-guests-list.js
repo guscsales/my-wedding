@@ -357,7 +357,8 @@ const guests = [
 		names: [
 			'Julia de Souza Ferreira',
 			'Marcel Augusto',
-			'Beatriz de Souza Ferreira'
+			'Beatriz de Souza Ferreira',
+			'Guilherme de Souza Ferreira'
 		]
 	},
 	{

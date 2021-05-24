@@ -3390,6 +3390,7 @@ a:focus {
   font-style: italic;
   padding: 25px;
   margin-bottom: 0;
+  border-radius: 4px;
 }
 @media (max-width: 991px) {
   .blog-details-content .entry-content blockquote {
