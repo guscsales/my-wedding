@@ -3,7 +3,7 @@ const googleAuth = require('./google-auth.json');
 const json2xls = require('json2xls');
 const fs = require('fs');
 
-const WEDDING_HOUR = '<EM DEFINIÇÃO>';
+const WEDDING_HOUR = '05/06 às 15:00';
 
 async function createGuestsCsv() {
 	firebase.initializeApp({
