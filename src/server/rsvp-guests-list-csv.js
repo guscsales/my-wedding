@@ -34,18 +34,20 @@ async function createGuestsCsv() {
 
 			guestConfirmationLinks.push({
 				'Nomes Completos': names.join(', '),
-				'Mensagem WhatsApp': `Olá ${result}! Aqui é a Helena e o Gustavo, estamos enviando essa mensagem para informar que devido a pandemia do coronavírus o horário do nosso casamento foi alterado. O novo horário será ${WEDDING_HOUR}. 
+				'Mensagem WhatsApp': `Olá ${result}! Aqui é a Helena e o Gustavo, estamos enviando essa mensagem para informar que devido a pandemia do coronavírus o horário do nosso casamento foi alterado. 
 				
-				Não deixe de confirmar sua presença no site clicando nesse link: https://gustavoehelena.com.br/?guest=${doc.id}.
+*O novo horário será ${WEDDING_HOUR}.* 
 				
-				Nos vemos lá! :D`
+Não deixe de confirmar sua presença no site clicando nesse link: https://gustavoehelena.com.br/?guest=${doc.id}
+				
+Nos vemos lá! :D`
 			});
 		}
 	});
 
-	fs.writeFileSync('guests.xlsx', json2xls(guests), 'binary');
+	fs.writeFileSync('Lista de Convidados.xlsx', json2xls(guests), 'binary');
 	fs.writeFileSync(
-		'guest confirmation links.xlsx',
+		'Lista de Famílias Que Ainda Não Confirmaram.xlsx',
 		json2xls(guestConfirmationLinks),
 		'binary'
 	);
