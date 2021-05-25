@@ -3,7 +3,7 @@ const googleAuth = require('./google-auth.json');
 const json2xls = require('json2xls');
 const fs = require('fs');
 
-const WEDDING_HOUR = '05/06 às 15:00';
+const WEDDING_HOUR = '15:00';
 
 async function createGuestsCsv() {
 	firebase.initializeApp({
@@ -36,7 +36,7 @@ async function createGuestsCsv() {
 				'Nomes Completos': names.join(', '),
 				'Mensagem WhatsApp': `Olá ${result}! Aqui é a Helena e o Gustavo, estamos enviando essa mensagem para informar que devido a pandemia do coronavírus o horário do nosso casamento foi alterado. 
 				
-*O novo horário será ${WEDDING_HOUR}.* 
+*O novo horário será às ${WEDDING_HOUR} ainda do dia 05/06.* 
 				
 Não deixe de confirmar sua presença no site clicando nesse link: https://gustavoehelena.com.br/?guest=${doc.id}
 				
