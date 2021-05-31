@@ -22,7 +22,6 @@ async function createGuestsCsv() {
 
 		names.forEach(name => {
 			guests.push({
-				Letra: '',
 				'Nome Completo': name,
 				'Presença Confirmada': textConfirm
 			});
@@ -30,24 +29,22 @@ async function createGuestsCsv() {
 
 		guests = _.orderBy(guests, ['Nome Completo'], ['asc']);
 
-		guests = guests.reduce((prev, cur) => {
-			if (!prev['Nome Completo']) {
-				guests.push({
-					Letra: 'A'
-				});
-			} else if (
-				cur['Nome Completo'].toLowerCase().charAt(0) !==
-				prev['Nome Completo'].toLowerCase().charAt(0)
-			) {
-				guests.push({
-					Letra: cur['Nome Completo'].toUpperCase().charAt(0)
-				});
-			}
-
-			return cur;
-		}, []);
-
-		console.log(guests);
+		// guests = guests.reduce((prev, cur) => {
+		// 	if (!prev['Nome Completo']) {
+		// 		guests.push({
+		// 			Letra: 'A'
+		// 		});
+		// 	} else if (
+		// 		cur['Nome Completo'].toLowerCase().charAt(0) !==
+		// 		prev['Nome Completo'].toLowerCase().charAt(0)
+		// 	) {
+		// 		guests.push({
+		// 			Letra: cur['Nome Completo'].toUpperCase().charAt(0)
+		// 		});
+		// 	}
+		//
+		// 	return cur;
+		// }, []);
 
 		const firstNames = names.map(name => name.split(' ')[0]);
 		const lastName = firstNames.pop();
@@ -79,12 +76,14 @@ ${
 		});
 	});
 
-	// fs.writeFileSync('Lista de Convidados.xlsx', json2xls(guests), 'binary');
-	// fs.writeFileSync(
-	// 	'Lista de Famílias Que Ainda Não Confirmaram.xlsx',
-	// 	json2xls(guestConfirmationLinks),
-	// 	'binary'
-	// );
+	fs.writeFileSync('Lista de Convidados.xlsx', json2xls(guests), 'binary');
+	fs.writeFileSync(
+		'Lista de Famílias Que Ainda Não Confirmaram.xlsx',
+		json2xls(guestConfirmationLinks),
+		'binary'
+	);
+
+	console.log('Done');
 }
 
 createGuestsCsv();

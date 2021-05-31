@@ -448,7 +448,17 @@ const guests = [
 	},
 	{
 		names: ['Elvis Silva', 'Rosana Silva']
-	}
+	},
+	{
+		names: [
+			'Fernando José da Silva',
+			'Enicleide Ribeiro Santos da Silva',
+			'Davi Santos Silva',
+			'Felipe Santos Silva',
+			'Pedro Santos Silva',
+			'Eva Santos Silva'
+		]
+	},
 ];
 
 function normalizeName(value) {
